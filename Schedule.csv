@@ -1,0 +1,21 @@
+Event Days,Repeat,Start time,End Time,Category
+PAMSA,M,11:30,12:20,Work
+PAMSA,W F,15:50,17:05,Work
+OOP,M W,10:00,11:15,Work
+OOP,R,11:30,14:20,Work
+Database Systems, T R,8:30,11:20,Work
+DLD ,M W F,17:30,18:20,Work
+DLD ,F,9:30,12:20,Work
+Engineeering Math,M W,13:00,14:15,Work
+Gym,M T W R F S,19:00,20:00,HOBBY
+Dinner,U,16:00,20:00,Leisure
+Hangout,U,21:00,22:01,Leisure
+,,,,
+,,,,
+Reminder,Repeat,Time,,
+send email,W,17:00,,
+check,M T,8:30,,
+testing,T,21:07,,
+,,,,
+,,,,
+,,,,
