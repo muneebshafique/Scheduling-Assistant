@@ -137,7 +137,7 @@ def format_for_printing_Timetable(Sorted_Table):
                 statement=(Sorted_Table[i][a][0]+" : "+Sorted_Table[i][a][1]+" -- "+Sorted_Table[i][a][2])
                 row.append(statement)
         lst.append(row)
-    print(lst)
+
     Table_output(lst)
 
 def Table_output(lst):
@@ -218,6 +218,7 @@ def Sorting_Schedule(Table,Day_Start,Day_end):
                 if time(int(end_break[0]),int(end_break[1]))>time(int(next_st_break[0]),int(next_st_break[1])):
                     Clash="True"
                     Statement=("There is a clash  between" + "  ===> "+ (" : ".join(Table[Day][a][:-1]))+ "  and   "+ (" : ".join(Table[Day][a+1][:-1]))+ "  on  "+ Day)
+                    print(Statement)
                     FreeTimeSlots,Time_periods=Free_Time_Slots(Table,Day_Start,Day_end)
                     Options=("You may choose some other time slot for your task from the following options")
                     print(Options)
@@ -343,7 +344,6 @@ def format_for_printing_Freetimeslots(FreeTimeSlots):
                 statement=(FreeTimeSlots[i][a])
                 row.append(statement)
         lst.append(row)
-    print(lst)
     Table_output(lst)
 
 def helper_free_time_slots(Sorted_Table,d_start,d_end):
@@ -356,7 +356,7 @@ def helper_free_time_slots(Sorted_Table,d_start,d_end):
         FreeTimeSlots[day]=[]
         Time_periods[day]=[]
         d_start="8:00"
-        d_end="23:30"
+        d_end="22:00"
         for event in Sorted_Table[day]:
             d_break=d_start.split(":")
             ev_start=event[1]
@@ -463,7 +463,7 @@ def format_for_printing_Todo_list(Todolist):
                     statement=(Todolist[i][a][0]+" at "+Todolist[i][a][1])
                     row.append(statement)
             lst.append(row)
-    print(lst)
+
     Table_output(lst)
 
 def To_do_List(Reminders):
@@ -525,12 +525,9 @@ def Automatic_rescheduler(Sorted_Table,Day,FreeTimeSlots,Time_periods,Data,Headi
     for x in Days_of_the_week:
         Options[x]=[]
 
-    print(Task_Numbers)
+
     work=(Sorted_Table[Day][int(Task_Numbers)-1])
 
-    print(work)
-    print(Sorted_Table)
-    print("Free Time Slots",FreeTimeSlots)
     # print(Time_periods)
     count=1
     # for work in Incomplete_work:
@@ -570,12 +567,9 @@ def part2(Sorted_Table,Day,FreeTimeSlots,Time_periods,Data,Heading,Reminders,d_s
     for x in Days_of_the_week:
         Options[x]=[]
 
-    print(Task_Numbers)
+
     work=(Sorted_Table[Day][int(Task_Numbers)-1])
 
-    print(work)
-    print(Sorted_Table)
-    print("Free Time Slots",FreeTimeSlots)
     # print(Time_periods)
     count=0
     # for work in Incomplete_work:
@@ -628,23 +622,21 @@ def part2(Sorted_Table,Day,FreeTimeSlots,Time_periods,Data,Heading,Reminders,d_s
 
                         Data.append([work[0],Symbols[Days_of_the_week.index(key)],i[1][:5],n_end_time,work[3]])
 
-                        print(Data)
                         Rewrite_Excel_File(Data,Heading,Reminders)
                         statement="Your task has successfully been"
                         box.insert("end",statement)
                         box.insert("end","Rescheduled.")
 
-                        print(Sorted_Table)
                         break
 
 
 
 
 # Personalized USER Details
-Name="mohid"
+Name="Muneeb"
 Name=Name.upper()
 Day_Start="8:00"
-Day_end="23:30"
+Day_end="22:00"
 
 
 
@@ -655,6 +647,7 @@ Date,Time=(Date_Today(today=0))
 filename="motivational.txt"
 Moti_Quote=Motivational_Quotes(filename)
 Sorted_Table=(Sorting_Schedule(Table,Day_Start,Day_end))
+
 Total_Time=(Time_journal_Days(Sorted_Table))
 Objects = ['MON', 'TUES', 'WED', 'THURS', 'FRI', 'SAT', 'SUN']
 Subjects,Time_per_Subject=Time_journal_Subjects(Sorted_Table)
